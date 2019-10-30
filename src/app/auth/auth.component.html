@@ -1,0 +1,73 @@
+<div class="authContainer">
+    <div class="authForm z-depth-2">
+        <div class="row">
+            <div class="col s5">
+                <div class="image">
+                    <img src="../../assets/auth/background.jpg" alt="">
+                </div>
+            </div>
+            <div class="col s7">
+                <div class="form">
+                    <div class="loginForm" *ngIf="!formActive">
+                        <h1 class="form-title">Member Login</h1>
+                        <form [formGroup]="loginForm" (submit)="loginUser()">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate" formControlName="email">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" class="validate" formControlName="password">
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s4">
+                                    <button class="btn waves-effect waves-light green" type="submit" name="action">Login
+                                    </button>
+                                </div>
+                                <div class="col s8">
+                                    <p class="link" (click)="toggleForm()">Create Your Account
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signupForm" *ngIf="formActive">
+                        <h1 class="form-title">Create an account</h1>
+                        <form [formGroup]="signupForm" (submit)="registerUser()">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate" formControlName="email">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="password" type="password" class="validate" formControlName="password">
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="confirm-password" type="password" class="validate">
+                                    <label for="confirm-password">Confirm Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s4">
+                                    <button class="btn waves-effect waves-light green" type="submit"
+                                        name="action">Signup
+                                    </button>
+                                </div>
+                                <div class="col s8">
+                                    <p class="link" (click)="toggleForm()">Login Instead</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

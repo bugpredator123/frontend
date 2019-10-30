@@ -1,0 +1,24 @@
+<div class="messages">
+    <h1 class="title">Messages</h1>
+    <ul class="collapsible data" *ngIf="messages.length>0">
+        <li *ngFor="let message of messages;let i=index">
+            <div class="collapsible-header">
+                    <div class="number">
+                        <div>{{ i+1 }}</div>
+                    </div>
+                    <div class="details">
+                            <div>Name: {{ message?.name|titlecase }}</div>
+                            <div>Email: {{ message?.email}}</div>
+                            <div>Subject: {{ message?.subject}}</div>
+                            <div>Date: {{ message?.date |date:shortDate}}</div>
+                    </div>
+            </div>
+            <div class="collapsible-body">
+                <b>Message:</b><br><br>
+                <!-- Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, sit eveniet amet veniam, animi esse eius fuga ea vitae at inventore nostrum vel reiciendis consequuntur ab porro et blanditiis illum? -->
+                {{ message?.message}}
+            </div>
+        </li>
+    </ul>
+    <h1 class="title" style="border:0;font-size:20px;text-align: center;" *ngIf="messages.length<=0">Nothing to Show.</h1>
+</div>

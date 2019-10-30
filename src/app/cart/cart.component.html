@@ -1,0 +1,101 @@
+<div class="base">
+    <h1 class="title">Checkout</h1>
+    <hr>
+    <div class="row">
+        <div class="col s9">
+            <div class="form">
+                <form class="col s12" [formGroup]="checkoutForm" (submit)="checkout()">
+                    <div class="row">
+                        <div class="col s6">
+                            <h3>Billing Address</h3>
+                            <div class="row">
+                                <div class="input-field col s5">
+                                    <input id="name" type="text" class="validate" formControlName="name">
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="input-field col s7">
+                                    <input id="email" type="text" class="validate" formControlName="email">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="mac_address" type="text" class="validate" formControlName="mac">
+                                    <label for="mac_address">Mac Address (without colons)</label>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="input-field col s4">
+                                    <input id="city" type="text" class="validate" formControlName="city">
+                                    <label for="city">City</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="state" type="text" class="validate" formControlName="state">
+                                    <label for="state">State</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="pincode" type="text" class="validate" formControlName="pincode">
+                                    <label for="pincode">Pincode</label>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="col s6">
+                            <h3>Payment Options</h3>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="name_on_card" type="text" class="validate"
+                                        formControlName="name_on_card">
+                                    <label for="name_on_card">Name On Card</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="credit_card_number" type="text" class="validate"
+                                        formControlName="card_number">
+                                    <label for="credit_card_number">Credit Card Number</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <input id="exp_month" type="text" class="validate" formControlName="expiry_month">
+                                    <label for="exp_month">Expiry Month</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="exp_year" type="text" class="validate" formControlName="expiry_year">
+                                    <label for="exp_year">Expiry Year</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="cvv" type="text" class="validate" formControlName="cvv">
+                                    <label for="cvv">CVV</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col offset-s7 col s4">
+                                    <button class="waves-effect waves-light btn-large green" type='submit'
+                                        [disabled]="!checkoutForm.valid || total==0">Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col s3">
+            <div class="cart">
+                <h1>
+                    <span>Cart</span>
+                    <span>{{count}}</span>
+                </h1>
+                <hr>
+                <p *ngFor="let product of data">
+                    <ng-container *ngIf='product.status'>
+                        <i>{{product.title}}</i>
+                        <i>${{product.price}}</i>
+                    </ng-container>
+                </p>
+                <h1 class="total">
+                    <span>Total</span>
+                    <span>${{total}}</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>

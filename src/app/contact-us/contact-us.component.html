@@ -1,0 +1,35 @@
+<div class="contact">
+    <div class="left">
+        <h1>Want to know more</h1>
+        <p>Contact Us</p>
+    </div>
+    <div class="right z-depth-3">
+        <form [formGroup]="contactForm" (ngSubmit)="submit()">
+            <div class="row">
+                <div class="input-field col s5">
+                    <input id="name" type="text" class="validate" formControlName="name">
+                    <label for="name">Name</label>
+                </div>
+                <div class="input-field col s7">
+                    <input id="email" type="email" class="validate" formControlName="email">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="subject" type="text" class="validate" formControlName="subject">
+                    <label for="subject">Subject</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s10">
+                    <textarea id="message" class="materialize-textarea" formControlName="message"></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <div class="input-field col offset-s1 s1">
+                    <button class="btn-floating btn-large waves-effect waves-light red" [disabled]="!contactForm.valid"><i class="material-icons">comment</i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

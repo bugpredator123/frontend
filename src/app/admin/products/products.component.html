@@ -1,0 +1,32 @@
+<div class="products">
+  <h1 class="title">Products</h1>
+  <ul class="collapsible data" *ngIf="products.length>0">
+    <li *ngFor="let product of products;let i=index">
+      <div class="collapsible-header">
+        <div class="number">
+          <div>{{ i+1 }}</div>
+        </div>
+        <div class="details">
+          <div><b>Serial No.:</b> {{product?._id|uppercase}}</div>
+          <div><b>Product:</b> {{product?.product_name}}</div>
+          <div><b>Date:</b> {{ product?.date | date:shortDate}}</div>
+        </div>
+      </div>
+      <div class="collapsible-body">
+        <h3 class="billing_details">Details</h3>
+        <ul class="collection">
+          <li class="collection-item"><b>Name:</b> {{product?.name}}</li>
+          <li class="collection-item"><b>Product Id:</b> {{product?.product_id}}</li>
+          <li class="collection-item"><b>Product Name:</b> {{product?.product_name}}</li>
+          <li class="collection-item"><b>Price:</b> {{product?.product_price}}</li>
+        </ul>
+        <hr>
+        <div class="activate">
+          <button class="waves-effect waves-light btn btn-large green" (click)='resendKey(product._id)' *ngIf="!this.sending"><i class="material-icons right">refresh</i>Send Key</button>
+          <button class="waves-effect waves-light btn btn-large green" disabled *ngIf="this.sending"><i class="material-icons right">refresh</i>Sending wait...</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <h1 class="title" style="border:0;font-size:20px;text-align: center;" *ngIf="products.length<=0">Nothing to Show.</h1>
+</div>

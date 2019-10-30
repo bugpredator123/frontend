@@ -1,0 +1,25 @@
+<div class="buy">
+    <h1>Featured Products</h1>
+    <hr>
+    <div class="cards">
+        <div class="card" *ngFor="let item of data;let i=index">
+            <div class="image">
+                <img src="../../assets/products/first.jpg" alt="">
+            </div>
+            <div class="control">
+                <div class="col s8">
+                    <div class="details">
+                        <h2>{{ item.title }}</h2>
+                        <p>Rs. {{ item.price }}</p>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="buttons">
+                        <a class="btn-floating waves-effect waves-light teal" *ngIf="!item.status" (click)='addToCart(item.id)'><i class="material-icons">add</i></a>
+                        <a class="btn-floating waves-effect waves-light green" *ngIf="item.status" routerLink="../checkout"><i class="material-icons">shopping_cart</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

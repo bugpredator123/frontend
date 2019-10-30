@@ -1,0 +1,14 @@
+.footer {
+    background: rgba(0,0,0,0.9);
+    width: 100%;
+    padding: 12px 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer .text {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}

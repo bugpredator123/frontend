@@ -1,0 +1,38 @@
+.download {
+    padding: 50px 80px;
+    padding-top: 100px;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000000;
+    background-image: url("../../assets/home/back.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.download h1 {
+    text-align: center;
+    font-size: 38px;
+    color:#ffd600;
+}
+.download h1 b{
+    color:white
+}
+.download p {
+    margin: 30px auto;
+    text-align: center;
+    font-size: 14px;
+    width: 50%;
+} 
+.download a {
+    margin-top: 30px;
+    color:grey;
+} 
+.download a:hover{
+    color:black;
+}
