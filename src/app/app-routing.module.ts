@@ -24,7 +24,7 @@ const routes: Routes = [
     {path:'messages',component:MessagesComponent},
     {path:'**',redirectTo:'/admin/products',pathMatch:'full'},
   ]},
-  {path:'',redirectTo:'/home',pathMatch:'full'},
+  {path:'**',redirectTo:'/home',pathMatch:'full'},
 ];
 
 @NgModule({

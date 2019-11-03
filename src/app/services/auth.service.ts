@@ -8,9 +8,9 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class AuthService {
-
-  private _registerUrl = 'http://localhost:9000/auth/register';
-  private    _loginUrl = 'http://localhost:9000/auth/login'
+  private API = "https://bugpredator.herokuapp.com/";
+  private _registerUrl = this.API + 'auth/register';
+  private    _loginUrl = this.API + 'auth/login';
 
   constructor(private http: HttpClient, public cookie:CookieService,public router:Router) { }
 
@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   loggedIn() {
-    return !!this.cookie.get('token');   
+    return !!this.cookie.get('token');
   }
   setToken(token){
     this.cookie.set('token',token);

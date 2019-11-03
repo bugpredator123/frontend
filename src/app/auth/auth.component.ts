@@ -14,7 +14,7 @@ export class AuthComponent implements OnInit {
   formActive:boolean=false;
   signupForm:FormGroup;
   loginForm:FormGroup;
-
+  loading=false;
   constructor(private authService:AuthService,private router:Router,private cookieService:CookieService) { }
 
   ngOnInit() {
@@ -35,13 +35,22 @@ export class AuthComponent implements OnInit {
     this.formActive = !this.formActive;
   }
   registerUser(){
+    this.loading = true;
     this.authService.registerUser(this.signupForm.value).subscribe(
-      (response)=>console.log(response),
-      (error)=>console.log(error)
+      (response)=>{
+        this.authService.setToken(response['token']);
+        this.router.navigate(['/buy']);
+        this.loading=false;
+      },
+      (error)=>{
+        this.loading=false;
+        console.log(error);
+      }
     );
   }
 
   loginUser(){
+    this.loading=true;
     this.authService.loginUser(this.loginForm.value).subscribe(
       (response)=>{
         response = response['data'];
@@ -49,11 +58,17 @@ export class AuthComponent implements OnInit {
         if(response['admin']){
           this.cookieService.set('admin','true');
           this.router.navigate(['/admin']);
+          this.loading=false;
         }
-        else
-          this.router.navigate(['/home']);
+        else{
+          this.router.navigate(['/buy']);
+          this.loading=false;
+        }
       },
-      (error)=>console.log(error)
+      (error)=>{
+        this.loading=false;
+        console.log(error);
+      }
     );
   }
 }
