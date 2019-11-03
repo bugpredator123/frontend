@@ -9,9 +9,14 @@ import { DataService } from '../services/data.service';
 export class BuyPageComponent implements OnInit {
   data=[];
 
-  constructor(private dataService:DataService) { 
+  constructor(private dataService:DataService) {
     this.data=this.dataService.getCart();
-    console.log(this.data);
+    let cartData = JSON.parse(window.localStorage.getItem('cart'));
+    let indexes = cartData.filter((item)=>item.status==true).map((item)=>item.id);
+    this.data.forEach((item)=>{
+      if(indexes.includes(item.id))
+        item.status=true;
+    });
   }
 
   ngOnInit() {
@@ -20,5 +25,6 @@ export class BuyPageComponent implements OnInit {
   addToCart(id){
     this.dataService.addToCart(id);
     this.data=this.dataService.getCart();
+    window.localStorage.setItem('cart',JSON.stringify(this.data));
   }
 }

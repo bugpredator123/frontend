@@ -1,7 +1,20 @@
 <div class="products">
   <h1 class="title">Products</h1>
-  <ul class="collapsible data" *ngIf="products.length>0">
-    <li *ngFor="let product of products;let i=index">
+  <div class="loader preloader-wrapper big active" *ngIf="loading">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+  <ul class="collapsible data z-depth-0" style="overflow-y:auto;" *ngIf="products.length>0 && !loading">
+    <li *ngFor="let product of products;let i=index" >
       <div class="collapsible-header">
         <div class="number">
           <div>{{ i+1 }}</div>
@@ -22,11 +35,13 @@
         </ul>
         <hr>
         <div class="activate">
-          <button class="waves-effect waves-light btn btn-large green" (click)='resendKey(product._id)' *ngIf="!this.sending"><i class="material-icons right">refresh</i>Send Key</button>
-          <button class="waves-effect waves-light btn btn-large green" disabled *ngIf="this.sending"><i class="material-icons right">refresh</i>Sending wait...</button>
+          <button class="waves-effect waves-light btn btn-large green" (click)='resendKey(product._id)'
+            *ngIf="!this.sending"><i class="material-icons right">refresh</i>Send Key</button>
+          <button class="waves-effect waves-light btn btn-large green" disabled *ngIf="this.sending"><i
+              class="material-icons right">refresh</i>Sending wait...</button>
         </div>
       </div>
     </li>
   </ul>
-  <h1 class="title" style="border:0;font-size:20px;text-align: center;" *ngIf="products.length<=0">Nothing to Show.</h1>
+  <h1 class="title" style="border:0;font-size:20px;text-align: center;" *ngIf="products.length<=0 && !loading">Nothing to Show.</h1>
 </div>

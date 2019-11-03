@@ -10,11 +10,14 @@ declare var $: any;
 export class ProductsComponent implements OnInit {
   products=null;
   sending=false;
+  loading=true;
+
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
     this.dataService.getProducts().subscribe(
       (res)=>{
+        this.loading=false;
         this.products=res;
         console.log(res);
       },

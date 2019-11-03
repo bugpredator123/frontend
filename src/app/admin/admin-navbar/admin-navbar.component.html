@@ -4,10 +4,11 @@
     </div>
     <div class="links">
         <ul>
-            <li routerLink="/admin/messages"><i class="small material-icons">message</i></li>
-            <li  routerLink="/admin/products"><i class="small material-icons">archive</i></li>
+            <li routerLink="/admin/messages" class="tooltipped" data-position="right" data-tooltip="Messages"><i class="small material-icons">message</i>
+            </li>
+            <li  routerLink="/admin/products" class="tooltipped" data-position="right" data-tooltip="Products"><i class="small material-icons">archive</i></li>
             <li></li>
-            <li><i class="small material-icons" (click)="logout()">exit_to_app</i></li>
+            <li   (click)="logout()" class="tooltipped" data-position="right" data-tooltip="Logout"><i class="small material-icons">exit_to_app</i></li>
         </ul>
     </div>
 </div>

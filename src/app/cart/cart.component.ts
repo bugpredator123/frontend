@@ -15,6 +15,12 @@ export class CartComponent implements OnInit {
   checkoutForm: FormGroup;
   constructor(private dataService: DataService, private router: Router) {
     this.data = this.dataService.getCart();
+    let cartData = JSON.parse(window.localStorage.getItem('cart'));
+    let indexes = cartData.filter((item)=>item.status==true).map((item)=>item.id);
+    this.data.forEach((item)=>{
+      if(indexes.includes(item.id))
+        item.status=true;
+    });
     this.data.forEach((item) => {
       if (item['status']) {
         this.count++;
@@ -34,6 +40,8 @@ export class CartComponent implements OnInit {
       'expiry_year': new FormControl(null, [Validators.required]),
       'cvv': new FormControl(null, [Validators.required])
     });
+    let formData = JSON.parse(window.localStorage.getItem('checkoutForm'));
+    this.checkoutForm.patchValue(formData);
   }
 
   checkout() {
@@ -53,5 +61,15 @@ export class CartComponent implements OnInit {
         (error) => console.log(error)
       );
     }
+  }
+
+  saveChanges(){
+    let data = this.checkoutForm.value;
+    //clearing expiry month,year and cvv
+    data['exp_month']=null;
+    data['exp_year']=null;
+    data['cvv']=null;
+    //storing in localstorage
+    window.localStorage.setItem('checkoutForm',JSON.stringify(data));
   }
 }

@@ -15,7 +15,7 @@
 }
 .data{
     margin:0 140px;
-    height:80vh;
+    max-height:85vh;
     margin-bottom:10vh;
     overflow-y:scroll;
 }
@@ -48,4 +48,10 @@
   display:flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.loader{
+  position: absolute;
+  margin-top:50px;
+  left:50%;
 }

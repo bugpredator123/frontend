@@ -36,3 +36,9 @@
     font-size:20px;
     color:white;
 }
+
+.loader{
+  position: absolute;
+  margin-top:50px;
+  left:50%;
+}

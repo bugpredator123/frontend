@@ -8,16 +8,19 @@ declare var $: any;
 })
 export class MessagesComponent implements OnInit {
   messages=null;
+  loading:boolean=true;
   constructor(private dataService:DataService) {
-
   }
 
   ngOnInit() {
     this.dataService.getMessage().subscribe(
       (res)=>{
         this.messages = res;
+        this.loading=false;
       },
-      (err)=>console.log(err)
+      (err)=>{
+        console.log(err);
+      }
     );
   }
   ngAfterViewInit(){
