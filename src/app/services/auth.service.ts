@@ -8,7 +8,9 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class AuthService {
-  private API = "https://bugpredator.herokuapp.com/";
+  // private API = "https://bugpredator.herokuapp.com/";
+  private API = "http://127.0.0.1:9000/";
+
   private _registerUrl = this.API + 'auth/register';
   private    _loginUrl = this.API + 'auth/login';
 

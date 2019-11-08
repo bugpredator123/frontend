@@ -16,11 +16,13 @@ export class CartComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {
     this.data = this.dataService.getCart();
     let cartData = JSON.parse(window.localStorage.getItem('cart'));
-    let indexes = cartData.filter((item)=>item.status==true).map((item)=>item.id);
-    this.data.forEach((item)=>{
-      if(indexes.includes(item.id))
-        item.status=true;
-    });
+    if (cartData && cartData.length > 0) {
+      let indexes = cartData.filter((item) => item.status == true).map((item) => item.id);
+      this.data.forEach((item) => {
+        if (indexes.includes(item.id))
+          item.status = true;
+      });
+    }
     this.data.forEach((item) => {
       if (item['status']) {
         this.count++;
@@ -41,7 +43,8 @@ export class CartComponent implements OnInit {
       'cvv': new FormControl(null, [Validators.required])
     });
     let formData = JSON.parse(window.localStorage.getItem('checkoutForm'));
-    this.checkoutForm.patchValue(formData);
+    if(formData)
+      this.checkoutForm.patchValue(formData);
   }
 
   checkout() {
@@ -63,13 +66,13 @@ export class CartComponent implements OnInit {
     }
   }
 
-  saveChanges(){
+  saveChanges() {
     let data = this.checkoutForm.value;
     //clearing expiry month,year and cvv
-    data['exp_month']=null;
-    data['exp_year']=null;
-    data['cvv']=null;
+    data['exp_month'] = null;
+    data['exp_year'] = null;
+    data['cvv'] = null;
     //storing in localstorage
-    window.localStorage.setItem('checkoutForm',JSON.stringify(data));
+    window.localStorage.setItem('checkoutForm', JSON.stringify(data));
   }
 }
