@@ -71,10 +71,11 @@
                     <span>{{count}}</span>
                 </h1>
                 <hr>
-                <p *ngFor="let product of data">
+                <p *ngFor="let product of data;let i=index">
                     <ng-container *ngIf='product.status'>
                         <i>{{product.title}}</i>
                         <i>${{product.price}}</i>
+                        <i class="material-icons closeBtn" (click)="removeMe(i)">delete</i>
                     </ng-container>
                 </p>
                 <h1 class="total">

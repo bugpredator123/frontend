@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
         this.count++;
         this.total += item['price'];
       }
-    })
+    });
   }
 
   ngOnInit() {
@@ -74,5 +74,18 @@ export class CartComponent implements OnInit {
     data['cvv'] = null;
     //storing in localstorage
     window.localStorage.setItem('checkoutForm', JSON.stringify(data));
+  }
+
+  removeMe(index){
+    this.data[index]['status']=false;
+    this.count = 0;
+    this.total = 0;
+    this.data.forEach((item) => {
+      if (item['status']) {
+        this.count++;
+        this.total += item['price'];
+      }
+    });
+    window.localStorage.setItem('cart', JSON.stringify(this.data));
   }
 }

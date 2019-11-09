@@ -40,6 +40,7 @@ export class AuthComponent implements OnInit {
     this.loading = true;
     this.authService.registerUser(this.signupForm.value).subscribe(
       (response) => {
+        window.localStorage.clear();
         this.authService.setToken(response['token']);
         this.router.navigate(['/buy']);
         this.loading = false;
@@ -58,6 +59,7 @@ export class AuthComponent implements OnInit {
     this.authService.loginUser(this.loginForm.value).subscribe(
       (response) => {
         response = response['data'];
+        window.localStorage.clear();
         this.authService.setToken(response['token']);
         if (response['admin']) {
           this.cookieService.set('admin', 'true');

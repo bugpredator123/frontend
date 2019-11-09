@@ -4,7 +4,18 @@
     <div class="cards">
         <div class="card" *ngFor="let item of data;let i=index">
             <div class="image">
-                <img src="../../assets/products/first.jpg" alt="">
+                <img src="../../assets/products/first.jpg" alt="" (load)="loading[i]=true" [ngClass]="{hide: !loading[i]}">
+                <div class="preloader-wrapper small active" [ngClass]="{hide: loading[i]}">
+                  <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                      <div class="circle"></div>
+                    </div><div class="gap-patch">
+                      <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                </div>
             </div>
             <div class="control">
                 <div class="col s8">

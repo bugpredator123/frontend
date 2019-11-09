@@ -8,6 +8,7 @@ import { DataService } from '../services/data.service';
 })
 export class BuyPageComponent implements OnInit {
   data = [];
+  loading=[];
 
   constructor(private dataService: DataService) {
     this.data = this.dataService.getCart();

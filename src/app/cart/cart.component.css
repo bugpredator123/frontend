@@ -60,10 +60,15 @@
 }
 
 .cart i {
+  position: relative;
+   cursor: pointer;
     display: block;
     font-size: 16px;
+    padding-bottom:2px;
+    border-bottom:1px solid #b7b7b7;
     font-style: normal;
     color: #686464;
+    margin-bottom:10px;
 }
 #close-btn{
     cursor: pointer;
@@ -78,4 +83,14 @@
     margin:0 auto;
     position: absolute;
     bottom:10px;
+}
+.closeBtn{
+  position: absolute;
+  top:0;
+  right:0;
+  margin-right:0px;
+  /* background:red; */
+  color:red !important;
+  border:none !important;
+  /* padding-bottom:2px; */
 }

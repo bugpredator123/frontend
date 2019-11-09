@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class DataService {
-  // private _url = "https://bugpredator.herokuapp.com/";
-  private _url = 'http://127.0.0.1:9000/';
+  private _url = "https://bugpredator.herokuapp.com/";
+  // private _url = 'http://127.0.0.1:9000/';
 
   constructor(private http:HttpClient) { }
 
