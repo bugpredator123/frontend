@@ -5,7 +5,8 @@
     <ul class="list">
         <li routerLink="/home" routerLinkActive="active"><a>HOME</a></li>
         <li routerLink='/download' routerLinkActive="active"><a>DOWNLOAD</a></li>
-        <li routerLink="/buy" routerLinkActive="active"><a>BUY</a></li>
+        <li routerLink="/auth" *ngIf="!isLoggedIn" routerLinkActive="active"><a>LOGIN</a></li>
+        <li routerLink="/buy" *ngIf="isLoggedIn" routerLinkActive="active"><a>BUY</a></li>
         <li routerLink="/checkout" *ngIf="isLoggedIn" routerLinkActive="active"><a><i class="material-icons">add_shopping_cart</i></a></li>
         <li (click)="logout()" *ngIf="isLoggedIn" routerLinkActive="active"><a><i class="material-icons">exit_to_app</i></a></li>
     </ul>

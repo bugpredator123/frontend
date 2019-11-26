@@ -8,6 +8,7 @@
     background-image:url('../../assets/home/back.jpg');
     background-attachment: fixed;
     background-size:100%;
+    position: relative;
 }
 
 p {
@@ -15,4 +16,12 @@ p {
     color: white;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
+}
+.redirect-btn{
+  position: absolute;
+  bottom:15px;
+  right:25px;
+  border-radius:50px;
+  border:1px solid #b7b7b7;
+  background-color:transparent !important;
 }
